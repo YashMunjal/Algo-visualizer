@@ -1,29 +1,44 @@
 import React, { useState, useEffect } from "react";
-import arr from "./ArrayMaker";
 import "./Sorting.css";
 
 const SortingVisualizer = () => {
   var [flag, setFlag] = useState(0);
+  const arr = [];
+  for (let i = 0; i < 200; i++) {
+    arr.push(setRand(5, 700));
+  }
+  useEffect(() => {
+    for (let i = 0; i < 200; i++) {
+      arr.push(setRand(5, 600));
+    }
+  }, [arr, flag]);
 
-    
-  var newArray=[...arr];
+  
+  const mergeSort=(e)=>{
+    //console.log(e);
+  }
 
-  useEffect(()=>{
-    
-  },[flag])
+
   return (
     <div className="array-container">
-        <p>The value is flag is {flag}</p>
-      {newArray.map((value, index) => (
+      {arr.map((value, index) => (
         <div
           className="array-bar"
           key={index}
           style={{ height: `${value}px` }}
         ></div>
       ))}
-      <button onClick={() => setFlag(flag+1)}>Generate New Array</button>
+      <button onClick={() => setFlag(flag + 1)}>Generate New Array</button>
+      <button onClick={mergeSort(arr)}>MergeSort</button>
     </div>
   );
 };
+
+//helper
+
+//helper
+function setRand(a, b) {
+  return Math.floor(Math.random() * (b - a + 1) + a);
+}
 
 export default SortingVisualizer;

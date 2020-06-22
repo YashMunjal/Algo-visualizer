@@ -3,7 +3,7 @@ const arr=[];
 
 
 for(let i=0;i<200;i++){
-    arr.push(setRand(5,1000));
+    arr.push(setRand(5,700));
 }
 
 
